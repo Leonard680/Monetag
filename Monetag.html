@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap & Earn</title>
+  <!-- Monetag Verification -->
+  <meta name="monetag" content="9b3a7f5bad96fbd62a96e8cbbe922ed2">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .balance-section {
+      background-color: #0f0;
+      color: #000;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .tap-button {
+      background-color: #28a745;
+      color: white;
+      font-size: 32px;
+      border: none;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="balance-section">
+    Balance: ₦<span id="balance">0</span>
+  </div>
+
+  <button class="tap-button" onclick="handleTap()">TAP</button>
+
+  <script>
+    // Load balance from localStorage or start at 0
+    let balance = parseInt(localStorage.getItem('balance')) || 0;
+
+    // Update balance display
+    function updateUI() {
+      document.getElementById('balance').innerText = balance.toLocaleString();
+    }
+
+    // Handle Tap
+    function handleTap() {
+      balance += 100;
+      localStorage.setItem('balance', balance);
+      updateUI();
+    }
+
+    // Init
+    updateUI();
+  </script>
+
+</body>
+</html>
